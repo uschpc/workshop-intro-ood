@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Intro to Open OnDemand (at CARC)</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Center for Advance Research Computing at University of Southern California" />
+        <link rel="stylesheet" href="main.css" type ="text/css" />
+    </head>
+
+    <body>
+        <textarea id="source">
+class: left, top, title-slide
+
+
+background-image: url('images/cluster_pic.jpg')
+<h1> Intro to Open OnDemand</h1>
+
+<h3> Center for Advanced Research Computing
+<br> University of Southern California <br>
+<h3>
+
+<div class="footnote">
+<p> Last updated 2022-03-11</p>
+</div>
+---
+## Outline
+<a href="https://carc-ondemand.usc.edu"> <img src="images/ood_tabs.png"/ style="float:right; width:60%"> </a>
+- File explorer
+    - Upload/Download Files
+    - Creating files
+- Submitting jobs
+- Terminal
+- Interactive Apps
+    - Jupyter Notebooks
+    - RStudio
+---
+## Files tab
+
+<a href="https://carc-ondemand.usc.edu"> <img src="images/ood_file_list.jpg"/ style="float:right; width:50%"> </a>
+- Clicking on the "Files" tab you should see a list of all your directories
+<a href="https://carc-ondemand.usc.edu"> <img src="images/ood_files_dashboard.png"/ style="float:right; width:52%; padding-top:30px"> </a>
+- Clicking on a directory will display the contents
+- You can view, edit, or up/download files using the browser
+
+---
+## Submitting jobs
+<a href="https://carc-ondemand.usc.edu/pun/sys/myjobs/workflows"> <img src="images/ood_job_composer.png"/ style="float:right; width:30%"> </a>
+- You can submit jobs using "job composer"
+- OOD provides some template job scripts
+- You may need to customize `job.sh` to suit your use case
+
+<a href="https://carc-ondemand.usc.edu/pun/sys/myjobs/workflows"> <img src="images/ood_job_templates.png"/ style="float:right; width:50%"> </a>
+---
+## Submitting jobs
+<a href="https://carc-ondemand.usc.edu/pun/sys/myjobs/workflows"> <img src="images/ood_job_settings.png"/ style="float:right; width:32%"> </a>
+- Jobs can be created from your existing scripts
+- You will need to specify where the job script lives
+    - Note that the directory is coppied to your home dir
+- Directory should hold all files needed for job
+---
+## Submitting jobs
+<a href="https://carc-ondemand.usc.edu/pun/sys/myjobs/workflows"> <img src="images/ood_job_details.png"/ style="float:right; padding-left: 10px; width:25%"> </a>
+<a href="https://carc-ondemand.usc.edu/pun/sys/myjobs/workflows"> <img src="images/ood_job_manage.png"/ style="float:right; width:40%"> </a>
+- After job submission you can
+    - Track job progress
+    - Cancel job
+    - Check folder contents
+
+
+
+---
+## Terminal Access
+<a href="https://carc-ondemand.usc.edu/pun/sys/myjobs/workflows"> <img src="images/ood_terminal_access.png"/ style="float:right; width:40%"> </a>
+- You can request terminal access from the "Clusters" tab.
+- Normal terminal accessible from browser
+
+---
+## Interactive Apps
+
+- Currently two "interactive apps"
+    - JupyterLab
+    - RStudio Server
+- Submit jobs run apps on compute node interact with browser
+
+---
+
+## Getting Compute Resources
+<a href="https://carc-ondemand.usc.edu/pun/sys/myjobs/workflows"> <img src="images/ood_interactive_resources.png"/ style="float:right; width:40%"> </a>
+
+- Before launching app you will need to get a compute node
+
+|Resource type| |
+|---|---|
+| Cluster| discovery or endeavor (condo)|
+|Account| Which allocation to charge compute time to|
+|Partition|usually `debug` or `main`|
+|Number of CPUs| |
+|GPUs | (optional)|
+|Number of GPUs| 0,1, or 2|
+|Time | Max 4 hours|
+|Constraint |Type of node you want|
+
+---
+
+## Getting Compute Resources
+<img src="images/ood_resource_submit.png"/ style="float:right; width:50%">
+- After filling in desired values request is sent to queue
+- When compute resources are ready, you can connect
+<img src="images/ood_resource_allocated.png"/ style="float:right; padding-top: 15px; width:60%">
+- Please note that there is no internet access
+    - Download dependencies and data beforehand
+---
+## RStudio
+ - RStudio will provide login credentials
+
+<img src="images/ood_rstudio_login.png"/ style="float:left; width:60%">
+---
+## RStudio
+
+<img src="images/ood_rstudio_view.png"/ style="float:right; width:70%">
+- Any R libraries you have installed should be available
+- If there are other required dependencies let us know
+---
+## JupyterLab
+- Similar to RStudio but works with multiple languages
+<img src="images/ood_jupyter_view.png"/ style="float:left;padding-top: 15px; width:80%">
+---
+## JupyterLab
+
+<img src="images/ood_jupyter_modules.png"/ style="float:right; width:20%">
+<img src="images/ood_jupyter_file_browser.png"/ style="float:right;padding-right: 15px; width:20%">
+- Default "kernel" is python
+- Files accessible through browser
+- USC modules are available
+    - Make sure to restart kernel if you load new modules
+
+---
+## Adding JupyterLab Kernels
+- Kernel interprets code you type into notebook
+- If you like Jupyter Notebooks you can install kernels for other languages
+    - https://github.com/jupyter/jupyter/wiki/Jupyter-kernels
+    - See [Installing Jupyter Kernels](https://www.carc.usc.edu/user-information/user-guides/software-and-programming/jupyter-kernels) for detailed instructions
+- If you have an Anaconda environment you can create a kernel for it
+
+```bash
+module purge
+conda activate myenv
+conda install -c conda-forge ipykernel
+python -m ipykernel install --user --name myenv --display-name "My env"
+```
+
+---
+## Resources
+- CARC home page
+    - https://carc.usc.edu
+- CARC User Forum
+    - https://hpc-discourse.usc.edu/categories
+- SLURM tutorials
+    - https://slurm.schedmd.com/tutorials.html
+- SLURM quick reference
+    - https://slurm.schedmd.com/pdfs/summary.pdf
+
+---
+count: false
+## Resources
+- CARC home page
+    - https://carc.usc.edu
+- CARC User Forum <- the most value for the community!
+    - https://hpc-discourse.usc.edu/categories
+- SLURM tutorials
+    - https://slurm.schedmd.com/tutorials.html
+- SLURM quick reference
+    - https://slurm.schedmd.com/pdfs/summary.pdf
+---
+## Getting Help
+- Request assistance
+    - Email carc-support@usc.edu
+    - Office Hours (drop-in)
+        - Every Tuesday@2:30pm (Zoom)
+- Learn more!
+    - Visit carc.usc.edu
+    - Request a consultation (anytime)
+    - Attend a Workshop (when scheduled)
+
+---
+# Thank you for attending!
+# Questions?
+# carc-support@usc.edu
+
+        </textarea>
+        <script src="https://remarkjs.com/downloads/remark-latest.min.js"> </script>
+        <script>
+            var slideshow = remark.create({
+                ratio: "16:9",
+                highlightStyle: "ascetic",
+            })
+        </script>
+    </body>
+</html>
